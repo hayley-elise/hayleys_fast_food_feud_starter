@@ -2,8 +2,10 @@ import * as React from "react"
 // IMPORT ANY NEEDED COMPONENTS HERE
 import { createDataSet } from "./data/dataset"
 import "./App.css"
-import "./Header.css"
-import Header from "./Header/Header.jsx"
+import Header from "./components/Header/Header"
+import Instructions from "./components/Instructions/Instructions"
+import Chip from "./components/Chip/Chip"
+import NutritionalLabel from "./components/NutritionalLabel/NutritionalLabel"
 
 // don't move this!
 export const appInfo = {
@@ -29,13 +31,17 @@ export function App() {
       <div className="CategoriesColumn col">
         <div className="categories options">
           <h2 className="title">Categories</h2>
-          {/* YOUR CODE HERE */}
+          {categories.map((object, idx) => (
+            <div className= "restaurants"> 
+            <p> {object} </p> 
+            </div>
+          ))}
         </div>
       </div>
 
       {/* MAIN COLUMN */}
       <div className="container">
-        {Header}
+        <Header header = {appInfo}/>
 
         {/* RESTAURANTS ROW */}
         <div className="RestaurantsRow">
@@ -43,7 +49,7 @@ export function App() {
           <div className="restaurants options">{/* YOUR CODE HERE */}</div>
         </div>
 
-        {/* INSTRUCTIONS GO HERE */}
+        <Instructions string = {appInfo.instructions.start}/>
 
         {/* MENU DISPLAY */}
         <div className="MenuDisplay display">
